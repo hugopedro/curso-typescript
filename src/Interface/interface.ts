@@ -3,7 +3,7 @@ interface IGame {
   description: string;
   genre: string;
   platform: string[];
-  getSimilars: (title: string) => void;
+  getSimilars?: (title: string) => void;
 }
 
 const rdr: IGame = {
@@ -16,5 +16,23 @@ const rdr: IGame = {
   },
 };
 
-console.log(rdr.title);
-rdr.getSimilars(rdr.title);
+interface DLC extends IGame {
+  originalGame: IGame;
+  newContent: string[];
+}
+
+const johnMarston: DLC = {
+  title: 'Red Dead Redemption - John Marston',
+  description: 'You play as John before the original game',
+  genre: 'Action',
+  platform: ['PC'],
+  originalGame: rdr,
+  newContent: ['3 hours story, new characteres'],
+};
+
+/*console.log(rdr.title);*/
+if (rdr.getSimilars) rdr.getSimilars(rdr.title);
+/* Se não fizer um if nao pode chamar, pois tem a possibilidade de ser undefined,
+pois getSimilars é opcional agora */
+
+console.log(johnMarston);
