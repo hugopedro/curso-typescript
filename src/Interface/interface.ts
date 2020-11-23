@@ -2,7 +2,7 @@ interface IGame {
   title: string;
   description: string;
   genre: string;
-  platform: string[];
+  platform?: string[];
   getSimilars?: (title: string) => void;
 }
 
@@ -36,3 +36,16 @@ if (rdr.getSimilars) rdr.getSimilars(rdr.title);
 pois getSimilars é opcional agora */
 
 console.log(johnMarston);
+
+class CreateGame implements IGame {
+  /* Significa que a classe CreateGame tem que ter todos os tipos definidos na interface */
+  title: string;
+  description: string;
+  genre: string;
+
+  constructor(t: string, d: string, g: string) {
+    this.title = t;
+    this.description = t;
+    this.genre = t;
+  }
+}
